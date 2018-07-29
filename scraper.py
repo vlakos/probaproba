@@ -19,10 +19,10 @@ html = scraperwiki.scrape('http://inmo.ie/6022')
 
 import lxml.html
 root = lxml.html.fromstring(html) # turn our HTML into an lxml object
-tds = root.cssselect('td') # get all the <td> tags
+tds = root.cssselect('tr') # get all the <td> tags
 #print tds
-for td in tds:
-    print td.text_content()
+for tr in tds:
+    print tr.text_content()
     #print lxml.html.tostring(td) # the full HTML tag
     #print td.text                # just the text inside the HTML tag
 
@@ -33,9 +33,9 @@ for td in tds:
 # Check the 'Data' tab - here you'll see the data saved in the ScraperWiki store. 
 # -----------------------------------------------------------------------------
 
-for td in tds:
-     record = { "td" : td.text_content() } # column name and value
-     scraperwiki.sqlite.save(["td"], record)
+for tr in tds:
+     record = { "tr" : tr.text_content() } # column name and value
+     scraperwiki.sqlite.save(["tr"], record)
      #try:
        # scraperwiki.sqlite.save(["td"], record) # save the records one by one
     # except:
