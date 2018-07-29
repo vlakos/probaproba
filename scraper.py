@@ -4,7 +4,7 @@
 ###############################################################################
 
 import scraperwiki
-html = scraperwiki.scrape('https://en.wikipedia.org/wiki/Bajaga_i_Instruktori_discography')
+html = scraperwiki.scrape('http://inmo.ie/6022')
 print "Click on the ...more link to see the whole page"
 print html
 
