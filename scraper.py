@@ -25,7 +25,8 @@
 
 import scraperwiki
 html = scraperwiki.scrape('https://www.cins.rs/srpski')
-print html
+sausages = html
+print sausages
 
 # -----------------------------------------------------------------------------
 # In the next tutorial, you'll learn how to extract the useful parts
