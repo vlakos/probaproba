@@ -1,22 +1,33 @@
-import urllib2
-from xml.dom.minidom import parseString
+###############################################################################
+# START HERE: Tutorial 1: Getting used to the ScraperWiki editing interface.
+# Follow the actions listed with -- BLOCK CAPITALS below.
+###############################################################################
 
-def get_google_new_results( term, count ):
-    results = []
-    obj = parseString( urllib2.urlopen('http://news.google.com/news?q=%s&output=rss' % term).read() )
+# -----------------------------------------------------------------------------
+# 1. Start by running a really simple Python script, just to make sure that 
+# everything is working OK.
+# -- CLICK THE 'RUN' BUTTON BELOW
+# You should see some numbers print in the 'Console' tab below. If it doesn't work, 
+# try reopening this page in a different browser - Chrome or the latest Firefox.
+# -----------------------------------------------------------------------------
 
-    elements = obj.getElementsByTagName('title')[2:] # To get rid of unwanted title elements in XML doc    
-    links = obj.getElementsByTagName('link')[2:]
-    print links
-    for element in elements[:count]:
-        headline =  element.childNodes[0].data
-        for link in links:
-            url = link.childNodes[0].data.split('=')[-1]
-        newssearch = headline + ' -> ' + url
-        results.append( newssearch )
+#for i in range(10):
+    #print "Hello", i
 
-    return results
+# -----------------------------------------------------------------------------
+# 2. Next, try scraping an actual web page and getting some raw HTML.
+# -- UNCOMMENT THE THREE LINES BELOW (i.e. delete the # at the start of the lines)
+# -- CLICK THE 'RUN' BUTTON AGAIN 
+# You should see the raw HTML at the bottom of the 'Console' tab. 
+# Click on the 'more' link to see it all, and the 'Sources' tab to see our URL - 
+# you can click on the URL to see the original page. 
+# -----------------------------------------------------------------------------
 
-items = get_google_new_results( 'vucic', 10 )
-for i,e in enumerate(items):
-    print '%d: %s' % (i+1,e,)
+import scraperwiki
+html = scraperwiki.scrape('https://www.cins.rs/srpski')
+print html
+
+# -----------------------------------------------------------------------------
+# In the next tutorial, you'll learn how to extract the useful parts
+# from the raw HTML page.
+# -----------------------------------------------------------------------------
