@@ -1,11 +1,11 @@
 ####################################
-2 #STARTHERE:Tutorial2:Basicscrapingandsavingtothedatastore.
+#STARTHERE:Tutorial2:Basicscrapingandsavingtothedatastore.
  #FollowtheactionslistedinBLOCKCAPITALSbelow.
  ####################################
 
  import scraperwiki
  html = scraperwiki.scrape('http://inmo.ie/6022')
- print "Clickonthe...morelinktoseethewholepage"
+ print "Click on the...more link to see the whole page"
  print html
 #---------------------------
  #1.ParsetherawHTMLtogettheinterestingbits-thepartinside<tdtags.
@@ -15,7 +15,7 @@
  #theHTMLthatwasinside<td</tdtags.
  #Weuselxml,whichisaPythonlibraryespeciallyforparsinghtml.
  #---------------------------
-    importlxml.html
+importlxml.html
 root = lxml.html.fromstring(html)#turnourHTMLintoanlxmlobject
 tds = root.cssselect('td')#getallthe<tdtags
 for td in tds:
@@ -29,7 +29,7 @@ print td.text # just the text inside the HTML tag
 #Checkthe'Data'tab-hereyou'llseethedatasavedintheScraperWikistore.
 #---------------------------
 for td in tds:
- record = { "td" : td.text } # column name and value
+record = { "td" : td.text } # column name and value
 scraperwiki.sqlite.save(["td"], record) # save the records one by one
 
 #---------------------------
