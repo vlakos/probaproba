@@ -4,7 +4,7 @@
 ###############################################################################
 
 import scraperwiki
-html = scraperwiki.scrape('https://web.archive.org/web/20120318184750/http://www.inmo.ie/6022')
+html = scraperwiki.scrape('https://en.wikipedia.org/wiki/Bajaga_i_Instruktori_discography')
 print "Click on the ...more link to see the whole page"
 print html
 
