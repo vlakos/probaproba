@@ -4,7 +4,7 @@
 ###############################################################################
 
 import scraperwiki
-html = scraperwiki.scrape('http://inmo.ie/6022')
+html = scraperwiki.scrape('https://www.mpravde.gov.rs/registar.php?id=6659')
 #print "Click on the ...more link to see the whole page"
 #print html
 
@@ -19,7 +19,7 @@ html = scraperwiki.scrape('http://inmo.ie/6022')
 
 import lxml.html
 root = lxml.html.fromstring(html) # turn our HTML into an lxml object
-tds = root.cssselect('tr') # get all the <td> tags
+tds = root.cssselect('h3') # get all the <td> tags
 #print tds
 for tr in tds:
     print tr.text_content()
