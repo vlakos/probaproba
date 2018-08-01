@@ -22,7 +22,7 @@ root = lxml.html.fromstring(html) # turn our HTML into an lxml object
 tds = root.cssselect('a') # get all the <td> tags
 print tds
 for a in tds:
-    print tr.text_content()
+    print a.text_content()
     print lxml.html.tostring(a) # the full HTML tag
     print a.text                # just the text inside the HTML tag
 
