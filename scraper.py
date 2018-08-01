@@ -19,7 +19,7 @@ print html
 
 import lxml.html
 root = lxml.html.fromstring(html) # turn our HTML into an lxml object
-tds = root.cssselect('p a.href') # get all the <td> tags
+tds = root.cssselect('a.href') # get all the <td> tags
 print tds
 #for tr in tds:
     #print tr.text_content()
