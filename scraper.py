@@ -19,12 +19,12 @@ html = scraperwiki.scrape('http://www.acas.rs/mere-javnog-objavljivanja-preporuk
 
 import lxml.html
 root = lxml.html.fromstring(html) # turn our HTML into an lxml object
-tds = root.cssselect('p') # get all the <td> tags
+tds = root.cssselect('a') # get all the <td> tags
 print tds
-for p in tds:
-    print p.text_content()
-    print lxml.html.tostring(p) # the full HTML tag
-    print p.text                # just the text inside the HTML tag
+for a in tds:
+    print a.text_content()
+    print lxml.html.tostring(a) # the full HTML tag
+    print a.text                # just the text inside the HTML tag
 
 # -----------------------------------------------------------------------------
 # 2. Save the data in the ScraperWiki datastore.
@@ -33,14 +33,14 @@ for p in tds:
 # Check the 'Data' tab - here you'll see the data saved in the ScraperWiki store. 
 # -----------------------------------------------------------------------------
 
-for p in tds:
-     record = { "p" : p.text_content() } # column name and value
-     scraperwiki.sqlite.save(["p"], record)
+for a in tds:
+     record = { "a" : a.text_content() } # column name and value
+     scraperwiki.sqlite.save(["a"], record)
      try:
-        scraperwiki.sqlite.save(["p"], record) # save the records one by one
+        scraperwiki.sqlite.save(["a"], record) # save the records one by one
      except:
-        record = { "p" : "NO ENTRY" } # column name and value
-        scraperwiki.sqlite.save(["p"], record) # save the records one by one
+        record = { "a" : "NO ENTRY" } # column name and value
+        scraperwiki.sqlite.save(["a"], record) # save the records one by one
     
 # -----------------------------------------------------------------------------
 # Go back to the Tutorials page and continue to Tutorial 3 to learn about 
