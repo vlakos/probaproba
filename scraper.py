@@ -33,14 +33,14 @@ for p in tds:
 # Check the 'Data' tab - here you'll see the data saved in the ScraperWiki store. 
 # -----------------------------------------------------------------------------
 
-#for tr in tds:
-     #record = { "tr" : tr.text_content() } # column name and value
-     #scraperwiki.sqlite.save(["tr"], record)
-     #try:
-       # scraperwiki.sqlite.save(["td"], record) # save the records one by one
-    # except:
-        #record = { "td" : "NO ENTRY" } # column name and value
-        #scraperwiki.sqlite.save(["td"], record) # save the records one by one
+for p in tds:
+     record = { "p" : p.text_content() } # column name and value
+     scraperwiki.sqlite.save(["p"], record)
+     try:
+        scraperwiki.sqlite.save(["p"], record) # save the records one by one
+     except:
+        record = { "p" : "NO ENTRY" } # column name and value
+        scraperwiki.sqlite.save(["p"], record) # save the records one by one
     
 # -----------------------------------------------------------------------------
 # Go back to the Tutorials page and continue to Tutorial 3 to learn about 
