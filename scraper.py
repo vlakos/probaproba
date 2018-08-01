@@ -19,12 +19,12 @@ html = scraperwiki.scrape('http://www.acas.rs/mere-javnog-objavljivanja-preporuk
 
 import lxml.html
 root = lxml.html.fromstring(html) # turn our HTML into an lxml object
-tds = root.cssselect('href') # get all the <td> tags
+tds = root.cssselect('p') # get all the <td> tags
 print tds
-for href in tds:
-    print href.text_content()
-    print lxml.html.tostring(href) # the full HTML tag
-    print href.text                # just the text inside the HTML tag
+for p in tds:
+    print p.text_content()
+    print lxml.html.tostring(p) # the full HTML tag
+    print p.text                # just the text inside the HTML tag
 
 # -----------------------------------------------------------------------------
 # 2. Save the data in the ScraperWiki datastore.
