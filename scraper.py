@@ -17,10 +17,10 @@ print html
 # We use lxml, which is a Python library especially for parsing html.
 # -----------------------------------------------------------------------------
 
-#import lxml.html
-#root = lxml.html.fromstring(html) # turn our HTML into an lxml object
-#tds = root.cssselect('p a.href') # get all the <td> tags
-#print tds
+import lxml.html
+root = lxml.html.fromstring(html) # turn our HTML into an lxml object
+tds = root.cssselect('p a.href') # get all the <td> tags
+print tds
 #for tr in tds:
     #print tr.text_content()
     #print lxml.html.tostring(td) # the full HTML tag
