@@ -4,7 +4,7 @@
 ###############################################################################
 
 import scraperwiki
-html = scraperwiki.scrape('https://www.mpravde.gov.rs/registar.php?id=6659')
+html = scraperwiki.scrape('http://www.acas.rs/mere-javnog-objavljivanja-preporuke-za/')
 #print "Click on the ...more link to see the whole page"
 #print html
 
@@ -19,9 +19,9 @@ html = scraperwiki.scrape('https://www.mpravde.gov.rs/registar.php?id=6659')
 
 import lxml.html
 root = lxml.html.fromstring(html) # turn our HTML into an lxml object
-tds = root.cssselect('h3') # get all the <td> tags
-#print tds
-for tr in tds:
+tds = root.cssselect('p a.href') # get all the <td> tags
+print tds
+#for tr in tds:
     print tr.text_content()
     #print lxml.html.tostring(td) # the full HTML tag
     #print td.text                # just the text inside the HTML tag
@@ -33,9 +33,9 @@ for tr in tds:
 # Check the 'Data' tab - here you'll see the data saved in the ScraperWiki store. 
 # -----------------------------------------------------------------------------
 
-for tr in tds:
-     record = { "tr" : tr.text_content() } # column name and value
-     scraperwiki.sqlite.save(["tr"], record)
+#for tr in tds:
+     #record = { "tr" : tr.text_content() } # column name and value
+     #scraperwiki.sqlite.save(["tr"], record)
      #try:
        # scraperwiki.sqlite.save(["td"], record) # save the records one by one
     # except:
